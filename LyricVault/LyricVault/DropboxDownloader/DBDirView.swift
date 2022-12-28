@@ -26,7 +26,7 @@ struct DBDirListView: View {
     let dropboxClient = DropboxClientsManager.authorizedClient
     
     var body: some View {
-        
+        // NavigationView has been deprecated in favor of NavigationStack
         NavigationView {
             VStack {
                 NavigationLink(destination: DropBoxDirView(title: "Dropbox Files",

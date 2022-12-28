@@ -34,11 +34,11 @@ struct DBDirListApp: App {
                     .tabItem {
                         Label("Screen 2", systemImage: "house")
                     }
-                LibraryView()
-                    .tag(Screen.library)
-                    .tabItem {
-                        Label("Lyric Library", systemImage: "building.columns")
-                    }
+//                LibraryView()
+//                    .tag(Screen.library)
+//                    .tabItem {
+//                        Label("Lyric Library", systemImage: "building.columns")
+//                    }
 
             }
         }

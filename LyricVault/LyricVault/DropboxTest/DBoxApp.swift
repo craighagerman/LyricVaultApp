@@ -20,9 +20,9 @@ struct DropboxTestApp: App {
 
     var body: some Scene {
         WindowGroup {
-            DBFilesView()
+//            DBFilesView()
 //            ContentViewDB()
-//            SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

@@ -11,8 +11,6 @@ import SwiftUI
 import CoreData
 
 
-
-
 // ----------------------------------------------------------------------------------------------------
 // Primary view - display button "list dropbox files"
 //      n.b. this view is a temporary WIP. Later move this functionally to a Settings view
@@ -27,13 +25,13 @@ struct ImportSongsView: View {
     let dropboxClient = DropboxClientsManager.authorizedClient
     
     var body: some View {
-            VStack {
-                NavigationLink(destination: DropBoxDirectoryView(viewContext: viewContext, metadata: [])) {
-                    Text("List Dropbox Files").foregroundColor(Color.blue)
-                }.onTapGesture {
-                    print("Tapped")
-                }
+        VStack {
+            NavigationLink(destination: DropBoxDirectoryView(viewContext: viewContext, metadata: [])) {
+                Text("List Dropbox Files").foregroundColor(Color.blue)
+            }.onTapGesture {
+                print("Tapped")
             }
+        }
     }
 }
 

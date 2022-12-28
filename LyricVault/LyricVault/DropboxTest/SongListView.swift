@@ -26,6 +26,7 @@ struct SongListView: View {
     private var songs: FetchedResults<Songs>
     
     var body: some View {
+        // NavigationView has been deprecated in favor of NavigationStack
         NavigationView {
             VStack {
                 // Input fields

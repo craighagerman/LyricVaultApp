@@ -27,8 +27,7 @@ struct LyricVaultApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LyricVaultView()
-//            ImportSongsView()
+            LyricVaultView().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
