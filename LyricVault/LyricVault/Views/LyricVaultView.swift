@@ -9,16 +9,18 @@ import SwiftyDropbox
 import SwiftUI
 
 struct LyricVaultView: View {
+    // a var used for popping a new sheet
+    @State private var showingNewPlaylistSheet = false
+    
     let persistenceController = PersistenceController.shared
-    
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Setlists.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)])
-    private var setlists: FetchedResults<Setlists>
     
-    //    @FetchRequest(entity: Songs.entity(), sortDescriptors: [NSSortDescriptor(key: "title", ascending: true)])
-    //    private var vault: FetchedResults<Songs>
+    @FetchRequest(entity: SetlistNames.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)])
+    private var setlistNames: FetchedResults<SetlistNames>
     
-    let vault = ["Songs"] // TODO - pull from DB
+    //    @FetchRequest(entity: Setlists.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)])
+    //    private var setlists: FetchedResults<Setlists>
+    
     
     var body: some View {
         
@@ -30,28 +32,27 @@ struct LyricVaultView: View {
                             Image(systemName: "music.note")
                             Text("All Songs")
                         }
-                        
-                        
-                        //                        ForEach(vault, id: \.self) { library in
-                        //                            NavigationLink(destination: Text(library)) {
-                        //                                Image(systemName: "music.note")
-                        //                                Text(library)
-                        //                            }
-                        //                        }
                     }
                     Section("Set lists") {
-                        ForEach(setlists) { setlist in
-                            Text(setlist.name ?? "Not found")
+                        ForEach(setlistNames) { setlist in
+                            let setlistId = setlist.setlistId!
+                            NavigationLink(destination: SetlistView(setlistId: setlistId).environment(\.managedObjectContext, persistenceController.container.viewContext) ) {
+                                Image(systemName: "list.bullet")
+                                Text(setlist.name ?? "Not found")
+                            }
                         }
-                        .onDelete(perform: deleteSetlist)
+                        .onDelete(perform: deleteSetlistName)
                     }
-                    
                 }.listStyle(.grouped)
                 Text("Lyric Vault")
                     .toolbar {
                         ToolbarItemGroup(placement: .primaryAction) {
-                            Button("New Playlist") {
-                                print("About tapped!")
+                            Button {
+                                showingNewPlaylistSheet.toggle()
+                            } label: {
+                                Image(systemName: "music.note.list")
+                            }.sheet(isPresented: $showingNewPlaylistSheet) {
+                                NewPlaylistView()
                             }
                         }
                         ToolbarItemGroup(placement: .secondaryAction) {
@@ -72,6 +73,11 @@ struct LyricVaultView: View {
     }
     
     
+    func newPlaylist() {
+        print("New Playlist tapped!")
+        
+    }
+    
     private func saveContext() {
         do {
             try viewContext.save()
@@ -81,15 +87,14 @@ struct LyricVaultView: View {
         }
     }
     
-    private func deleteSetlist(offsets: IndexSet) {
+    private func deleteSetlistName(offsets: IndexSet) {
         withAnimation {
-            offsets.map { setlists[$0] }.forEach(viewContext.delete)
+            offsets.map { setlistNames[$0] }.forEach(viewContext.delete)
             saveContext()
         }
     }
     
     func addSetlist() {
-        print("Plus button was tapped")
         // Pop open new view to add a new setlist
         SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
@@ -105,3 +110,64 @@ struct LyricVaultView_Previews: PreviewProvider {
         LyricVaultView()
     }
 }
+
+
+// ----------------------------------------------------------------------
+// Sheet that is popped up to create a new play list name
+// ----------------------------------------------------------------------
+struct NewPlaylistView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) var dismiss
+    @State private var disabled = true
+    @State var setlistName: String = ""
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Button("Cancel") {
+                    dismiss()
+                }
+                Spacer()
+                Text("New Playlist")
+                Spacer()
+                Button("Done") {
+                    addPlaylistName(name: setlistName)
+                    dismiss()
+                }.disabled(setlistName.isEmpty)
+                
+            }.padding(40)
+            HStack {
+                Spacer()
+                TextField("Playlist Name", text: $setlistName).textFieldStyle(.roundedBorder).padding(10) //.background(Color.yellow)
+                Spacer()
+            }
+            Spacer()
+        }
+    }
+    
+    
+    private func addPlaylistName(name: String) {
+        withAnimation {
+            let sl = SetlistNames(context: viewContext)
+            sl.setlistId = UUID()
+            sl.name = name
+            saveContext()
+        }
+    }
+    
+    
+    // TODO : refactor - this is copy/pasted exactly in a couple places
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("An error occured: \(error)")
+        }
+    }
+    
+}
+
+
+
+

@@ -19,15 +19,20 @@ import SwiftUI
 @main
 struct LyricVaultApp: App {
     
+    @Environment(\.scenePhase) var scenePhase
     let persistenceController = PersistenceController.shared
-
+    
     init() {
         DropboxClientsManager.setupWithAppKey("8w6d3q89dy1uea1")
     }
-
+    
     var body: some Scene {
         WindowGroup {
             LyricVaultView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            //            SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+        }
+        .onChange(of: scenePhase) { _ in
+            persistenceController.save()
         }
     }
 }

@@ -41,3 +41,9 @@ Regex
 
 
 https://developer.apple.com/forums/thread/119194
+
+Core Data Fetch Requests
+- https://www.advancedswift.com/fetch-requests-core-data-swift/#fetch-a-single-object
+
+
+

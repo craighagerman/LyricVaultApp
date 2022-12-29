@@ -20,6 +20,8 @@
 		8D317780295398D800BDD263 /* DBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D31777F295398D800BDD263 /* DBoxApp.swift */; };
 		8D3177822953AB7700BDD263 /* DBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3177812953AB7700BDD263 /* DBView.swift */; };
 		8D3177852953E71100BDD263 /* ScreenSwitcherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3177842953E71100BDD263 /* ScreenSwitcherApp.swift */; };
+		8D3FAA50295D4485000F4ADE /* SetlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3FAA4F295D4485000F4ADE /* SetlistView.swift */; };
+		8D3FAA53295DFFD2000F4ADE /* CodeWithChrisExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3FAA52295DFFD2000F4ADE /* CodeWithChrisExamples.swift */; };
 		8D428F592954B8C000C03D9F /* _example_lyrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F582954B8C000C03D9F /* _example_lyrics.swift */; };
 		8D428F5C2954DE5F00C03D9F /* SongModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F5A2954DE5F00C03D9F /* SongModel.xcdatamodeld */; };
 		8D428F5E2954E40E00C03D9F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F5D2954E40E00C03D9F /* PersistenceController.swift */; };
@@ -51,6 +53,8 @@
 		8D3177812953AB7700BDD263 /* DBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBView.swift; sourceTree = "<group>"; };
 		8D3177842953E71100BDD263 /* ScreenSwitcherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSwitcherApp.swift; sourceTree = "<group>"; };
 		8D3FAA4D295CB6FE000F4ADE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D3FAA4F295D4485000F4ADE /* SetlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetlistView.swift; sourceTree = "<group>"; };
+		8D3FAA52295DFFD2000F4ADE /* CodeWithChrisExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeWithChrisExamples.swift; sourceTree = "<group>"; };
 		8D428F582954B8C000C03D9F /* _example_lyrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _example_lyrics.swift; path = ../../../../Desktop/_example_lyrics.swift; sourceTree = "<group>"; };
 		8D428F5B2954DE5F00C03D9F /* SongModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SongModel.xcdatamodel; sourceTree = "<group>"; };
 		8D428F5D2954E40E00C03D9F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				8D428F6C2957E5BB00C03D9F /* SongData.swift */,
 				8D428F6A2957E4EC00C03D9F /* SongDeserializer.swift */,
 				8D3177622952684B00BDD263 /* Assets.xcassets */,
+				8D3FAA51295DFFB0000F4ADE /* DataClass */,
 				8D428F602955481500C03D9F /* DropboxDownloader */,
 				8D31777E295398C000BDD263 /* DropboxTest */,
 				8D428F652956656800C03D9F /* Examples */,
@@ -155,6 +160,14 @@
 			path = ScreenSwitcher;
 			sourceTree = "<group>";
 		};
+		8D3FAA51295DFFB0000F4ADE /* DataClass */ = {
+			isa = PBXGroup;
+			children = (
+				8D3FAA52295DFFD2000F4ADE /* CodeWithChrisExamples.swift */,
+			);
+			path = DataClass;
+			sourceTree = "<group>";
+		};
 		8D428F602955481500C03D9F /* DropboxDownloader */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +195,7 @@
 				8D3177702952A70F00BDD263 /* LibraryView.swift */,
 				8D428F6E2958F36900C03D9F /* LyricVaultView.swift */,
 				8D428F73295A9A5F00C03D9F /* ImportSongsView.swift */,
+				8D3FAA4F295D4485000F4ADE /* SetlistView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +283,7 @@
 				8D428F642955490400C03D9F /* DBDirView.swift in Sources */,
 				8D31776D29526EC100BDD263 /* ScreenOne.swift in Sources */,
 				8D428F6F2958F36900C03D9F /* LyricVaultView.swift in Sources */,
+				8D3FAA53295DFFD2000F4ADE /* CodeWithChrisExamples.swift in Sources */,
 				8D3177612952684800BDD263 /* ExampleContentView.swift in Sources */,
 				8D31777329534F7100BDD263 /* _example_Contacts.swift in Sources */,
 				8D428F69295668F800C03D9F /* ExampleApp.swift in Sources */,
@@ -285,6 +300,7 @@
 				8D3177852953E71100BDD263 /* ScreenSwitcherApp.swift in Sources */,
 				8D428F72295A727700C03D9F /* SongListView.swift in Sources */,
 				8D428F67295665E900C03D9F /* SelectableList.swift in Sources */,
+				8D3FAA50295D4485000F4ADE /* SetlistView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
