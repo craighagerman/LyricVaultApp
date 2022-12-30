@@ -1,25 +1,23 @@
 //
-//  SongListView.swift
+//  AddSongView.swift
 //  LyricVault
 //
-//  Created by Craig Hagerman on 2022-12-26.
+//  Created by Craig Hagerman on 2022-12-29.
 //
-
 
 import SwiftyDropbox
 import SwiftUI
 import CoreData
 
 
-
 // ------------------------------------------------------------------------------------------------
 // Purpose
-//  - sync with Core Data to add/get data and display DB contents in a list
+//  - Create and add Song to Core Data
 // ------------------------------------------------------------------------------------------------
-struct SongListView: View {
-    
+struct AddSongView: View {
     @State var title: String = ""
     @State var artist: String = ""
+    @State var lyrics: String = ""
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(entity: Song.entity(), sortDescriptors: [NSSortDescriptor(key: "artist", ascending: true)])
@@ -27,20 +25,25 @@ struct SongListView: View {
     
     var body: some View {
         // NavigationView has been deprecated in favor of NavigationStack
-        NavigationView {
+        NavigationStack {
             VStack {
                 // Input fields
-                Text("Songs")
-                TextField("Song Title", text: $title)
-                TextField("Song Artist", text: $artist)
+                Text("Add Song")
+                TextField("Song Title", text: $title).textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Song Artist", text: $artist).textFieldStyle(RoundedBorderTextFieldStyle())
+                TextEditor(text: $lyrics)
+                    .frame(minHeight: 30, alignment: .leading)
+                    .border(Color(uiColor: .opaqueSeparator), width: 0.5)
+                    .cornerRadius(6.0)
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal)
 
                 HStack {
                     Spacer()
                     Button("Add") {
                         addSong()
-                        title = ""
-                        artist = ""
-                    }
+                        reset()
+                    }.disabled(title.isEmpty || artist.isEmpty || lyrics.isEmpty)
                     Spacer()
                     NavigationLink(destination: ResultsView(title: title,
                                                             viewContext: viewContext)) {
@@ -50,6 +53,7 @@ struct SongListView: View {
                     Button("Clear") {
                         title = ""
                         artist = ""
+                        lyrics = ""
                     }
                     Spacer()
                 }
@@ -72,22 +76,25 @@ struct SongListView: View {
             .padding()
             .textFieldStyle(RoundedBorderTextFieldStyle())
         }
-//        .onAppear {
-//            print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
-//        }
     }
 
     
     
     private func addSong() {
-        
         withAnimation {
             let song = Song(context: viewContext)
             song.songid = UUID()
             song.title = title.capitalized
             song.artist = artist.capitalized
+            song.lyrics = lyrics
             saveContext()
         }
+    }
+    
+    private func reset() {
+        title = ""
+        artist = ""
+        lyrics = ""
     }
     
     private func saveContext() {
@@ -104,48 +111,12 @@ struct SongListView: View {
             offsets.map { songs[$0] }.forEach(viewContext.delete)
             saveContext()
         }
+    
     }
 }
 
-
-struct SongListView_Previews: PreviewProvider {
+struct AddSongView_Previews: PreviewProvider {
     static var previews: some View {
-        SongListView()
+        AddSongView()
     }
-}
-
-
-// ------------------------------------------------------------------------------------------------
-// search results
-// ------------------------------------------------------------------------------------------------
-struct ResultsView: View {
-    
-    var title: String
-    var viewContext: NSManagedObjectContext
-    @State var matches: [Song]?
-    
-    var body: some View {
-        
-        return VStack {
-            List {
-                ForEach(matches ?? []) { match in
-                    HStack {
-                        Text(match.title ?? "Not found")
-                        Spacer()
-                        Text(match.artist ?? "Not found")
-                    }
-                }
-            }
-            .navigationTitle("Results")
-        }
-        .task {
-            let fetchRequest: NSFetchRequest<Song> = Song.fetchRequest()
-            fetchRequest.entity = Song.entity()
-            fetchRequest.predicate = NSPredicate(
-                format: "title CONTAINS %@", title
-            )
-            matches = try? viewContext.fetch(fetchRequest)
-        }
-    }
-    
 }

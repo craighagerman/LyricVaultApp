@@ -22,7 +22,8 @@ struct DropboxTestApp: App {
         WindowGroup {
 //            DBFilesView()
 //            ContentViewDB()
-            SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+            AddSongView().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

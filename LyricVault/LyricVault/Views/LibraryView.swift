@@ -14,20 +14,20 @@ struct LibraryView: View {
     @State var title: String = ""
     @State var artist: String = ""
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Songs.entity(), sortDescriptors: [NSSortDescriptor(key: "artist", ascending: true)])
-    private var songs: FetchedResults<Songs>
+    @FetchRequest(entity: Song.entity(), sortDescriptors: [NSSortDescriptor(key: "artist", ascending: true)])
+    private var songs: FetchedResults<Song>
     
     var body: some View {
         // List of all songs
-        List {
-            ForEach(songs) { song in
-                HStack {
-                    Text(song.title ?? "Not found")
-                    Spacer()
-                    Text(song.artist ?? "Not found")
+        NavigationStack {
+            List {
+                ForEach(songs) { song in
+                    NavigationLink(destination: SongView(song: song).environment(\.managedObjectContext, persistenceController.container.viewContext) ) {
+                        Text("\(song.artist!) - \(song.title!)")
+                    }
                 }
+                .onDelete(perform: deleteSong)
             }
-            .onDelete(perform: deleteSong)
         }
     }
     

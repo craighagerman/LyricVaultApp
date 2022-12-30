@@ -15,11 +15,8 @@ struct LyricVaultView: View {
     let persistenceController = PersistenceController.shared
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(entity: SetlistNames.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)])
-    private var setlistNames: FetchedResults<SetlistNames>
-    
-    //    @FetchRequest(entity: Setlists.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)])
-    //    private var setlists: FetchedResults<Setlists>
+    @FetchRequest(entity: Setlist.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)])
+    private var setlists: FetchedResults<Setlist>
     
     
     var body: some View {
@@ -34,9 +31,9 @@ struct LyricVaultView: View {
                         }
                     }
                     Section("Set lists") {
-                        ForEach(setlistNames) { setlist in
-                            let setlistId = setlist.setlistId!
-                            NavigationLink(destination: SetlistView(setlistId: setlistId).environment(\.managedObjectContext, persistenceController.container.viewContext) ) {
+                        ForEach(setlists) { setlist in
+                            let slid = setlist.setlistid!
+                            NavigationLink(destination: SetlistView(slid: slid).environment(\.managedObjectContext, persistenceController.container.viewContext) ) {
                                 Image(systemName: "list.bullet")
                                 Text(setlist.name ?? "Not found")
                             }
@@ -52,15 +49,19 @@ struct LyricVaultView: View {
                             } label: {
                                 Image(systemName: "music.note.list")
                             }.sheet(isPresented: $showingNewPlaylistSheet) {
-                                NewPlaylistView()
+                                AddSetlistView()
                             }
                         }
                         ToolbarItemGroup(placement: .secondaryAction) {
+                            // TODO - refactor to a NavigationLink
                             Button("Sort Setlists") {
-                                print("Sort Setlists tapped")
+                                sortSetLists()
                             }
                             NavigationLink(destination: ImportSongsView() ) {
                                 Text("Import Songs")
+                            }
+                            NavigationLink(destination: AddSongView() ) {
+                                Text("Add Song")
                             }
                         }
                     }
@@ -72,11 +73,7 @@ struct LyricVaultView: View {
         print("Gear button was tapped")
     }
     
-    
-    func newPlaylist() {
-        print("New Playlist tapped!")
-        
-    }
+
     
     private func saveContext() {
         do {
@@ -89,22 +86,20 @@ struct LyricVaultView: View {
     
     private func deleteSetlistName(offsets: IndexSet) {
         withAnimation {
-            offsets.map { setlistNames[$0] }.forEach(viewContext.delete)
+            offsets.map {setlists[$0] }.forEach(viewContext.delete)
             saveContext()
         }
-    }
-    
-    func addSetlist() {
-        // Pop open new view to add a new setlist
-        SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
     
     func sortSetLists() {
         print("Sort button was tapped")
     }
-    
 }
 
+
+// ----------------------------------------------------------------------
+// LyricVaultView Preview
+// ----------------------------------------------------------------------
 struct LyricVaultView_Previews: PreviewProvider {
     static var previews: some View {
         LyricVaultView()
@@ -115,7 +110,7 @@ struct LyricVaultView_Previews: PreviewProvider {
 // ----------------------------------------------------------------------
 // Sheet that is popped up to create a new play list name
 // ----------------------------------------------------------------------
-struct NewPlaylistView: View {
+struct AddSetlistView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
     @State private var disabled = true
@@ -134,7 +129,6 @@ struct NewPlaylistView: View {
                     addPlaylistName(name: setlistName)
                     dismiss()
                 }.disabled(setlistName.isEmpty)
-                
             }.padding(40)
             HStack {
                 Spacer()
@@ -147,9 +141,10 @@ struct NewPlaylistView: View {
     
     
     private func addPlaylistName(name: String) {
+        print("calling addPlaylistName() with name= \(name)")
         withAnimation {
-            let sl = SetlistNames(context: viewContext)
-            sl.setlistId = UUID()
+            let sl = Setlist(context: viewContext)
+            sl.setlistid = UUID()
             sl.name = name
             saveContext()
         }
