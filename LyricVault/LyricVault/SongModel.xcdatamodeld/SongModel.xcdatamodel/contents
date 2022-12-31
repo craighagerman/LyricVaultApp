@@ -6,7 +6,7 @@
         <attribute name="songs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[Song]"/>
         <relationship name="tunes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="setlist" inverseEntity="Song"/>
     </entity>
-    <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
+    <entity name="Song" representedClassName=".Song" syncable="YES" codeGenerationType="category">
         <attribute name="artist" optional="YES" attributeType="String"/>
         <attribute name="chords" optional="YES" attributeType="String"/>
         <attribute name="genre" optional="YES" attributeType="String"/>

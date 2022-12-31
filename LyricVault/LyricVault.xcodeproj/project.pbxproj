@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D0314BD295E871A001BAB52 /* AddSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0314BC295E871A001BAB52 /* AddSongView.swift */; };
 		8D0314BF295E9382001BAB52 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0314BE295E9382001BAB52 /* SongView.swift */; };
+		8D0314CF295FC1CF001BAB52 /* Song+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0314CD295FC1CF001BAB52 /* Song+CoreDataClass.swift */; };
 		8D31775F2952684800BDD263 /* LyricVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D31775E2952684800BDD263 /* LyricVaultApp.swift */; };
 		8D3177612952684800BDD263 /* ExampleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3177602952684800BDD263 /* ExampleContentView.swift */; };
 		8D3177632952684B00BDD263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3177622952684B00BDD263 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		8D0314BC295E871A001BAB52 /* AddSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongView.swift; sourceTree = "<group>"; };
 		8D0314BE295E9382001BAB52 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
+		8D0314CD295FC1CF001BAB52 /* Song+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8D31775B2952684800BDD263 /* LyricVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D31775E2952684800BDD263 /* LyricVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricVaultApp.swift; sourceTree = "<group>"; };
 		8D3177602952684800BDD263 /* ExampleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		8D0314C4295F7A06001BAB52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8D0314CD295FC1CF001BAB52 /* Song+CoreDataClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				8D3177822953AB7700BDD263 /* DBView.swift in Sources */,
 				8D428F76295A9C1100C03D9F /* DownloaderApp.swift in Sources */,
 				8D428F622955489A00C03D9F /* DBDirListApp.swift in Sources */,
+				8D0314CF295FC1CF001BAB52 /* Song+CoreDataClass.swift in Sources */,
 				8D428F6D2957E5BB00C03D9F /* SongData.swift in Sources */,
 				8D3177712952A70F00BDD263 /* LibraryView.swift in Sources */,
 				8D428F6B2957E4EC00C03D9F /* SongDeserializer.swift in Sources */,
