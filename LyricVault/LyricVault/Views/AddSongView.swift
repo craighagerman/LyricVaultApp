@@ -35,9 +35,9 @@ struct AddSongView: View {
                     .frame(minHeight: 30, alignment: .leading)
                     .border(Color(uiColor: .opaqueSeparator), width: 0.5)
                     .cornerRadius(6.0)
-                                .foregroundColor(.secondary)
-                                .padding(.horizontal)
-
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                
                 HStack {
                     Spacer()
                     Button("Add") {
@@ -77,7 +77,7 @@ struct AddSongView: View {
             .textFieldStyle(RoundedBorderTextFieldStyle())
         }
     }
-
+    
     
     
     private func addSong() {
@@ -97,6 +97,7 @@ struct AddSongView: View {
         lyrics = ""
     }
     
+    // TODO : refactor - copy/pasted many times
     private func saveContext() {
         do {
             try viewContext.save()
@@ -111,7 +112,7 @@ struct AddSongView: View {
             offsets.map { songs[$0] }.forEach(viewContext.delete)
             saveContext()
         }
-    
+        
     }
 }
 

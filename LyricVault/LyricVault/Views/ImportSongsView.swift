@@ -17,8 +17,8 @@ import CoreData
 // ----------------------------------------------------------------------------------------------------
 struct ImportSongsView: View {
     
-    @State var title: String = "Legs"
-    @State var artist: String = "ZZ Top"
+//    @State var title: String = "Legs"
+//    @State var artist: String = "ZZ Top"
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -103,8 +103,10 @@ struct DropBoxDirectoryView: View {
                         let contents = String(data: encryptedContents, encoding: String.Encoding.utf8)!
                         print("contents: \(contents)")
                         
-                        let foo = SongDeserializer().parseRawData(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
-                        
+                        let song = SongDeserializer().parseRawData(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
+                        print("==========")
+                        song.printSongData()
+                        print("==========")
                         
                     } else if let error = error {
                         print(error)
@@ -122,6 +124,7 @@ struct DropBoxDirectoryView: View {
 // ----------------------------------------------------------------------------------------------------
 //  String Extension for cleaning text
 // ----------------------------------------------------------------------------------------------------
+// TODO : move elsewhere to a lib group
 extension String {
     // internal helper
     func matching(expression regex: @autoclosure () throws -> NSRegularExpression) rethrows -> [String] {

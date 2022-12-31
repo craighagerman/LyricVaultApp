@@ -87,6 +87,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D0314C4295F7A06001BAB52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8D3177522952684800BDD263 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +116,7 @@
 		8D31775D2952684800BDD263 /* LyricVault */ = {
 			isa = PBXGroup;
 			children = (
+				8D0314C4295F7A06001BAB52 /* Model */,
 				8D3FAA4D295CB6FE000F4ADE /* Info.plist */,
 				8D31777229534F7100BDD263 /* _example_Contacts.swift */,
 				8D428F582954B8C000C03D9F /* _example_lyrics.swift */,

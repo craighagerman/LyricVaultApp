@@ -13,6 +13,8 @@ import Foundation
 
 
 struct SongDeserializer {
+    
+//    @Environment(\.managedObjectContext) private var viewContext
 
     private func isSection(line: String) -> Bool {
         let sectionPattern = "^\\[[a-zA-Z1-9 -]+\\]$"
@@ -42,6 +44,19 @@ struct SongDeserializer {
         
         let lyrics = cleanText.replacingOccurrences(of: frontMatterPattern, with:"", options: .regularExpression)
             .replacingOccurrences(of: "--[-]+\n+", with: "", options: .regularExpression)
+        
+        /*
+         let song = Song(context: viewContext)
+         song.songid = UUID()
+         song.title = title.capitalized
+         song.artist = artist.capitalized
+         */
+        
+        
+//        let song = Song(context: viewContext)
+//        song.songid = UUID()
+//        song.title = title.capitalized
+//        song.artist = artist.capitalized
         
         return Songdata(title: title, artist: artist, lyrics: lyrics, frontMatter: frontMatter)
     }
@@ -74,6 +89,13 @@ struct Songdata: Identifiable, Decodable, Hashable {
         let hashed = SHA256.hash(data: inputData)
         let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
         return hashString
+    }
+    
+    func printSongData() {
+        print("- PRINT SONG DATA -")
+        print("title:\t\(title)")
+        print("artist:\t\(artist)")
+        print("lyrics:\t\(lyrics)")
     }
     
     
