@@ -100,8 +100,9 @@ struct DropBoxDirView: View {
                         let contents = String(data: encryptedContents, encoding: String.Encoding.utf8)!
                         print("contents: \(contents)")
                         
-                        let foo = SongDeserializer().parseRawData(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
+//                        let foo = SongDeserializer().parseRawData(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
                         
+                        let song = SongTunes().processInputText(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
                         
                     } else if let error = error {
                         print(error)

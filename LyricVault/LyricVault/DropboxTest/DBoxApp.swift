@@ -9,7 +9,7 @@ import SwiftyDropbox
 import SwiftUI
 
 
-//@main
+@main
 struct DropboxTestApp: App {
     
     let persistenceController = PersistenceController.shared

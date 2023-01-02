@@ -45,5 +45,24 @@ https://developer.apple.com/forums/thread/119194
 Core Data Fetch Requests
 - https://www.advancedswift.com/fetch-requests-core-data-swift/#fetch-a-single-object
 
+Codeable
+- https://stackoverflow.com/questions/47419291/codable-object-mapping-array-element-to-string
+
+
+
+Dictionary keys:
+- https://stackoverflow.com/questions/43718476/dictionary-fetch-all-keys-and-use-them-as-array
+
+Yaml with Swift
+- https://github.com/behrang/YamlSwift
+- https://github.com/jpsim/Yams
+NOTE
+    - Yaml doesn't appear to be handled natively by Swift built-in libraries at this time
+    - The above appear to the the two main 3rd party libraries available
+    - Neither library have great documentation
+    - YamlSwift if fucking ugly (why is everything loaded as a `Yaml` object ... rather than a Swift primitive. Grrr....)
+    - Yams seems better. Backed up by a lot more github stars.
+    - Unfortunately I can't figure out how to deal with Yaml containing a sequence of mappings (which isn't unusual!) for `chords`
+    - My ugly solution (until I figure things out) is to use YamlSwift to serialize `chords` using YamlSwift and the rest with Yams. (ugg)
 
 

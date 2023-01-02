@@ -16,7 +16,7 @@ import SwiftyDropbox
 import SwiftUI
 
 
-@main
+//@main
 struct LyricVaultApp: App {
     
     @Environment(\.scenePhase) var scenePhase

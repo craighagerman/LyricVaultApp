@@ -82,11 +82,13 @@ struct AddSongView: View {
     
     private func addSong() {
         withAnimation {
-            let song = Song(context: viewContext)
-            song.songid = UUID()
-            song.title = title.capitalized
-            song.artist = artist.capitalized
-            song.lyrics = lyrics
+            let song = SongTunes().createSong(artist: artist, title: title, lyrics: lyrics, key: nil, genre: nil, tags: nil, chords: nil)
+            
+//            let song = Song(context: viewContext)
+//            song.songid = UUID()
+//            song.title = title.capitalized
+//            song.artist = artist.capitalized
+//            song.lyrics = lyrics
             saveContext()
         }
     }
