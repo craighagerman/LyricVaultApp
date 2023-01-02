@@ -8,7 +8,6 @@
     </entity>
     <entity name="Song" representedClassName=".Song" syncable="YES" codeGenerationType="category">
         <attribute name="artist" optional="YES" attributeType="String"/>
-        <attribute name="chords" optional="YES" attributeType="String"/>
         <attribute name="genre" optional="YES" attributeType="String"/>
         <attribute name="hashStr" optional="YES" attributeType="String"/>
         <attribute name="key" optional="YES" attributeType="String"/>
