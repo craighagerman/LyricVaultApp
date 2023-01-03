@@ -91,7 +91,9 @@ struct AddSongView: View {
         let hashStrs: Set<String> = Set(songs.map{ $0.hashStr! })
         let st = SongTunes()
         let hashStr = st.computeHash(artist: artist, title: title)
-        
+        if hashStrs.contains(hashStr) {
+            print("LOG: hashStr exists for artist: \(artist) title: \(title)")
+        }
         // only add song if it doesn't already exist in the library
         if !hashStrs.contains(hashStr) {
             withAnimation {
@@ -109,8 +111,6 @@ struct AddSongView: View {
                 saveContext()
             }
         }
-        
-        
     }
     
     private func reset() {
@@ -136,7 +136,6 @@ struct AddSongView: View {
             offsets.map { songs[$0] }.forEach(viewContext.delete)
             saveContext()
         }
-        
     }
 }
 
