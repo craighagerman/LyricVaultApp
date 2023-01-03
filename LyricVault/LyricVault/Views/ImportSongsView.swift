@@ -103,12 +103,12 @@ struct DropBoxDirectoryView: View {
                         let contents = String(data: encryptedContents, encoding: String.Encoding.utf8)!
                         print("contents: \(contents)")
                         
-//                        let song = SongDeserializer().parseRawData(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
-                        
-                        let song = SongTunes().processInputText(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
+
+                        let st = SongTunes()
+                        let song = st.processInputText(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
                         
                         print("==========")
-                        song.printSongData()
+                        st.printSongData(song:song)
                         print("==========")
                         
                     } else if let error = error {

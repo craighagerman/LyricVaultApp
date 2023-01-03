@@ -8,14 +8,14 @@
 //      - parse md (or txt) file containing song lyrics to extract front matter and/or title - artist and convert into a dataclass for storage in Core Data
 
 
-import CryptoKit
-import Foundation
-
-
-struct SongDeserializer {
-    
+//import CryptoKit
+//import Foundation
+//import SwiftUI
+//
+//struct SongDeserializer {
+//
 //    @Environment(\.managedObjectContext) private var viewContext
-
+//
 //    private func isSection(line: String) -> Bool {
 //        let sectionPattern = "^\\[[a-zA-Z1-9 -]+\\]$"
 //        guard let matches = try? line.matching(pattern: sectionPattern) else {
@@ -60,43 +60,43 @@ struct SongDeserializer {
 //
 //        return Songdata(title: title, artist: artist, lyrics: lyrics, frontMatter: frontMatter)
 //    }
-}
+//}
 
 
-
-// ----------------------------------------------------------------------------------------------------
-//  Dataclass-like object for holding Core Data song data
-// ----------------------------------------------------------------------------------------------------
-struct Songdata: Identifiable, Decodable, Hashable {
-    var id: UUID?
-    var title: String
-    var artist: String
-    var lyrics: String
-
-    
-    init(title: String, artist: String, lyrics: String, frontMatter: String?) {
-        id = UUID()
-        self.title = title
-        self.artist = artist
-        self.lyrics = lyrics
-    }
-    
-    private func getId(title: String, artist: String) -> String {
-        // OPTION 1:
-        // id = UUID()
-        let inputString = "\(artist) \(title)"
-        let inputData = Data(inputString.utf8)
-        let hashed = SHA256.hash(data: inputData)
-        let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
-        return hashString
-    }
-    
-    func printSongData() {
-        print("- PRINT SONG DATA -")
-        print("title:\t\(title)")
-        print("artist:\t\(artist)")
-        print("lyrics:\t\(lyrics)")
-    }
-    
-    
-}
+//
+//// ----------------------------------------------------------------------------------------------------
+////  Dataclass-like object for holding Core Data song data
+//// ----------------------------------------------------------------------------------------------------
+//struct Songdata: Identifiable, Decodable, Hashable {
+//    var id: UUID?
+//    var title: String
+//    var artist: String
+//    var lyrics: String
+//
+//
+//    init(title: String, artist: String, lyrics: String, frontMatter: String?) {
+//        id = UUID()
+//        self.title = title
+//        self.artist = artist
+//        self.lyrics = lyrics
+//    }
+//
+//    private func getId(title: String, artist: String) -> String {
+//        // OPTION 1:
+//        // id = UUID()
+//        let inputString = "\(artist) \(title)"
+//        let inputData = Data(inputString.utf8)
+//        let hashed = SHA256.hash(data: inputData)
+//        let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
+//        return hashString
+//    }
+//
+//    func printSongData() {
+//        print("- PRINT SONG DATA -")
+//        print("title:\t\(title)")
+//        print("artist:\t\(artist)")
+//        print("lyrics:\t\(lyrics)")
+//    }
+//
+//
+//}

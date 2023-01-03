@@ -29,7 +29,6 @@
 		8D428F5C2954DE5F00C03D9F /* SongModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F5A2954DE5F00C03D9F /* SongModel.xcdatamodeld */; };
 		8D428F5E2954E40E00C03D9F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F5D2954E40E00C03D9F /* PersistenceController.swift */; };
 		8D428F622955489A00C03D9F /* DBDirListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F612955489A00C03D9F /* DBDirListApp.swift */; };
-		8D428F642955490400C03D9F /* DBDirView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F632955490400C03D9F /* DBDirView.swift */; };
 		8D428F67295665E900C03D9F /* SelectableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F66295665E900C03D9F /* SelectableList.swift */; };
 		8D428F69295668F800C03D9F /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F68295668F800C03D9F /* ExampleApp.swift */; };
 		8D428F6B2957E4EC00C03D9F /* SongDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F6A2957E4EC00C03D9F /* SongDeserializer.swift */; };
@@ -38,7 +37,7 @@
 		8D428F72295A727700C03D9F /* SongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F71295A727700C03D9F /* SongListView.swift */; };
 		8D428F74295A9A5F00C03D9F /* ImportSongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F73295A9A5F00C03D9F /* ImportSongsView.swift */; };
 		8D428F76295A9C1100C03D9F /* DownloaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D428F75295A9C1100C03D9F /* DownloaderApp.swift */; };
-		8D5DE9D72962867000F8ECC6 /* FooBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DE9D62962867000F8ECC6 /* FooBar.swift */; };
+		8D5DE9D72962867000F8ECC6 /* SongTunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DE9D62962867000F8ECC6 /* SongTunes.swift */; };
 		8DFBE28E2960E549006123CE /* FrontMatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFBE28D2960E548006123CE /* FrontMatter.swift */; };
 		8DFBE2912960E594006123CE /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = 8DFBE2902960E594006123CE /* Yams */; };
 /* End PBXBuildFile section */
@@ -68,7 +67,6 @@
 		8D428F5D2954E40E00C03D9F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		8D428F5F2955427A00C03D9F /* Vision.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Vision.md; sourceTree = "<group>"; };
 		8D428F612955489A00C03D9F /* DBDirListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBDirListApp.swift; sourceTree = "<group>"; };
-		8D428F632955490400C03D9F /* DBDirView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBDirView.swift; sourceTree = "<group>"; };
 		8D428F66295665E900C03D9F /* SelectableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableList.swift; sourceTree = "<group>"; };
 		8D428F68295668F800C03D9F /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		8D428F6A2957E4EC00C03D9F /* SongDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDeserializer.swift; sourceTree = "<group>"; };
@@ -77,7 +75,7 @@
 		8D428F71295A727700C03D9F /* SongListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListView.swift; sourceTree = "<group>"; };
 		8D428F73295A9A5F00C03D9F /* ImportSongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportSongsView.swift; sourceTree = "<group>"; };
 		8D428F75295A9C1100C03D9F /* DownloaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderApp.swift; sourceTree = "<group>"; };
-		8D5DE9D62962867000F8ECC6 /* FooBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooBar.swift; sourceTree = "<group>"; };
+		8D5DE9D62962867000F8ECC6 /* SongTunes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTunes.swift; sourceTree = "<group>"; };
 		8DFBE28D2960E548006123CE /* FrontMatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontMatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,13 +93,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D0314C4295F7A06001BAB52 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		8D3177522952684800BDD263 = {
 			isa = PBXGroup;
 			children = (
@@ -124,12 +115,11 @@
 		8D31775D2952684800BDD263 /* LyricVault */ = {
 			isa = PBXGroup;
 			children = (
-				8D0314C4295F7A06001BAB52 /* Model */,
 				8D3FAA4D295CB6FE000F4ADE /* Info.plist */,
 				8D31777229534F7100BDD263 /* _example_Contacts.swift */,
 				8D428F582954B8C000C03D9F /* _example_lyrics.swift */,
 				8D3177742953526C00BDD263 /* _examples_Constants.swift */,
-				8DFBE28D2960E548006123CE /* FrontMatter.swift */,
+				8D66B4C029638B3900760A9C /* Parser */,
 				8D31775E2952684800BDD263 /* LyricVaultApp.swift */,
 				8D428F5D2954E40E00C03D9F /* PersistenceController.swift */,
 				8D428F6C2957E5BB00C03D9F /* SongData.swift */,
@@ -142,7 +132,6 @@
 				8D3177642952684B00BDD263 /* Preview Content */,
 				8D428F5A2954DE5F00C03D9F /* SongModel.xcdatamodeld */,
 				8D428F70295A265300C03D9F /* Views */,
-				8D5DE9D62962867000F8ECC6 /* FooBar.swift */,
 			);
 			path = LyricVault;
 			sourceTree = "<group>";
@@ -194,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				8D428F612955489A00C03D9F /* DBDirListApp.swift */,
-				8D428F632955490400C03D9F /* DBDirView.swift */,
 				8D428F75295A9C1100C03D9F /* DownloaderApp.swift */,
 			);
 			path = DropboxDownloader;
@@ -222,6 +210,15 @@
 				8D0314BE295E9382001BAB52 /* SongView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8D66B4C029638B3900760A9C /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				8DFBE28D2960E548006123CE /* FrontMatter.swift */,
+				8D5DE9D62962867000F8ECC6 /* SongTunes.swift */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,7 +305,6 @@
 				8D428F592954B8C000C03D9F /* _example_lyrics.swift in Sources */,
 				8D428F5E2954E40E00C03D9F /* PersistenceController.swift in Sources */,
 				8D317780295398D800BDD263 /* DBoxApp.swift in Sources */,
-				8D428F642955490400C03D9F /* DBDirView.swift in Sources */,
 				8D31776D29526EC100BDD263 /* ScreenOne.swift in Sources */,
 				8D428F6F2958F36900C03D9F /* LyricVaultView.swift in Sources */,
 				8D3FAA53295DFFD2000F4ADE /* CodeWithChrisExamples.swift in Sources */,
@@ -319,7 +315,7 @@
 				8D428F76295A9C1100C03D9F /* DownloaderApp.swift in Sources */,
 				8D428F622955489A00C03D9F /* DBDirListApp.swift in Sources */,
 				8D428F6D2957E5BB00C03D9F /* SongData.swift in Sources */,
-				8D5DE9D72962867000F8ECC6 /* FooBar.swift in Sources */,
+				8D5DE9D72962867000F8ECC6 /* SongTunes.swift in Sources */,
 				8D3177712952A70F00BDD263 /* LibraryView.swift in Sources */,
 				8D428F6B2957E4EC00C03D9F /* SongDeserializer.swift in Sources */,
 				8D428F5C2954DE5F00C03D9F /* SongModel.xcdatamodeld in Sources */,

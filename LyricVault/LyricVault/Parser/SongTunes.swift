@@ -9,26 +9,30 @@ import CryptoKit
 import Foundation
 import CoreData
 import Yaml
+import SwiftUI
 
 
-public class SongTunes: NSManagedObject {
+//public class SongTunes: NSManagedObject {
+  
+public class SongTunes {
+
+//    var songid: UUID?
+//    var hashStr: String?
+//    var artist: String?
+//    var title: String?
+//    var lyrics: String?
+//    var key: String?
+//    var genre: String?
+//    var tags: [String]?
+//    var chords: [String]?
     
-    var songid: UUID?
-    var hashStr: String?
-    var artist: String?
-    var title: String?
-    var lyrics: String?
-    var key: String?
-    var genre: String?
-    var tags: [String]?
-    var chords: [String]?
+    @Environment(\.managedObjectContext) private var viewContext
     
-    func processInputText(title: String, artist: String, rawtext: String) -> SongTunes {
+    func processInputText(title: String, artist: String, rawtext: String) -> Song {
         let cleanText = boldifyLyricSections(text: rawtext)
         let frontMatterPattern = "(?s)(?<=---).*(?=---)"
-        self.songid = UUID()
+
         let lyrics = extractLyrics(text: cleanText, frontMatterPattern: frontMatterPattern)
-        
         let frontMatterText:String? = extractFrontMatter(text: cleanText, frontMatterPattern: frontMatterPattern)
         let fm = FrontMatterParser(fileArtist: artist.capitalized, fileTitle: title.capitalized).parseFrontMatter(frontMatterText: frontMatterText)
         
@@ -39,40 +43,57 @@ public class SongTunes: NSManagedObject {
 //            print("bar")
 //        }
         
-        self.songid = UUID()
-        self.hashStr = computeHash(artist: artist, title: title)
-        self.artist = fm.artist
-        self.title = fm.title
-        self.key = fm.key
-        self.genre = fm.genre
-        self.tags = fm.tags
-        self.chords = fm.chords
-        self.lyrics = lyrics
+        // ------------------------------------------------
+//        self.songid = UUID()
+//        self.hashStr = computeHash(artist: artist, title: title)
+//        self.artist = fm.artist
+//        self.title = fm.title
+//        self.key = fm.key
+//        self.genre = fm.genre
+//        self.tags = fm.tags
+//        self.chords = fm.chords
+//        self.lyrics = lyrics
+//        return self
         
-        return self
+        let song = Song(context: viewContext)
+        song.songid = UUID()
+        song.hashStr = computeHash(artist: artist, title: title)
+        song.artist = fm.artist
+        song.title = fm.title
+        song.key = fm.key
+        song.genre = fm.genre
+        song.tags = fm.tags
+        song.chords = fm.chords
+        song.lyrics = lyrics
+        return song
     }
     
     
 
-    func createSong(artist: String, title: String, lyrics: String, key: String?, genre: String?, tags: [String]?, chords: [String]? ) -> SongTunes {
-        self.songid = UUID()
-        self.hashStr = computeHash(artist: artist, title: title)
-        self.artist = artist
-        self.title = title
-        self.key = key ?? ""
-        self.genre = genre ?? ""
-        self.tags = tags ?? [""]
-        self.chords = chords ?? [""]
-        self.lyrics = lyrics
-        return self
+    func createSong(artist: String, title: String, lyrics: String, key: String?, genre: String?, tags: [String]?, chords: [String]? ) -> Song {
+        let song = Song(context: viewContext)
+        song.songid = UUID()
+        song.hashStr = computeHash(artist: artist, title: title)
+        song.artist = artist
+        song.title = title
+        song.key = key
+        song.genre = genre
+        song.tags = tags
+        song.chords = chords
+        song.lyrics = lyrics
+        return song
     }
     
-    func printSongData() {
-        print("- PRINT SONG DATA -")
-        print("title:\t\(self.title ?? "" )")
-        print("artist:\t\(self.artist ?? "" )")
-        print("lyrics:\t\(self.lyrics ?? "" )")
+    func printSongData(song: Song) {
+        print("artist: \(song.artist ?? "")")
+        print("title: \(song.title ?? "")")
+        print("key: \(song.key ?? "")")
+        print("genre: \(song.genre ?? "")")
+        print("tags: \(song.tags ?? [""])")
+        print("chords: \(song.chords ?? [""])")
+        print("lyrics: \(song.lyrics ?? "")")
     }
+
     
     // ======================================================================
     
@@ -84,7 +105,7 @@ public class SongTunes: NSManagedObject {
         return frontMatter
     }
         
-    private func computeHash(artist: String, title: String) -> String {
+    func computeHash(artist: String, title: String) -> String {
         let inputString = "\(artist.lowercased()) \(title.lowercased())"
         let inputData = Data(inputString.utf8)
         let hashed = SHA256.hash(data: inputData)
