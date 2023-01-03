@@ -17,6 +17,8 @@ import CoreData
 struct AddSongView: View {
     @State var title: String = ""
     @State var artist: String = ""
+    @State var key: String = ""
+    @State var genre: String = ""
     @State var lyrics: String = ""
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -31,6 +33,11 @@ struct AddSongView: View {
                 Text("Add Song")
                 TextField("Song Title", text: $title).textFieldStyle(RoundedBorderTextFieldStyle())
                 TextField("Song Artist", text: $artist).textFieldStyle(RoundedBorderTextFieldStyle())
+                HStack {
+                    TextField("Key", text: $key).textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Genre", text: $genre).textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                
                 TextEditor(text: $lyrics)
                     .frame(minHeight: 30, alignment: .leading)
                     .border(Color(uiColor: .opaqueSeparator), width: 0.5)
@@ -81,20 +88,37 @@ struct AddSongView: View {
     
     
     private func addSong() {
-        withAnimation {
-            let song = Song(context: viewContext)
-            song.songid = UUID()
-            song.title = title.capitalized
-            song.artist = artist.capitalized
-            song.lyrics = lyrics
-            saveContext()
+        let hashStrs: Set<String> = Set(songs.map{ $0.hashStr! })
+        let st = SongTunes()
+        let hashStr = st.computeHash(artist: artist, title: title)
+        
+        // only add song if it doesn't already exist in the library
+        if !hashStrs.contains(hashStr) {
+            withAnimation {
+                let song = Song(context: viewContext)
+                song.songid = UUID()
+                song.hashStr = st.computeHash(artist: artist, title: title)
+                song.artist = artist.capitalized
+                song.title = title.capitalized
+                song.key = key.capitalized
+                song.genre = genre.capitalized
+                //            song.tags = tags
+                //            song.chords = chords
+                song.lyrics = lyrics
+                st.printSongData(song:song) // deleteme
+                saveContext()
+            }
         }
+        
+        
     }
     
     private func reset() {
         title = ""
         artist = ""
         lyrics = ""
+        genre = ""
+        key = ""
     }
     
     // TODO : refactor - copy/pasted many times

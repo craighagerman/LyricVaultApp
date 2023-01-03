@@ -103,9 +103,12 @@ struct DropBoxDirectoryView: View {
                         let contents = String(data: encryptedContents, encoding: String.Encoding.utf8)!
                         print("contents: \(contents)")
                         
-                        let song = SongDeserializer().parseRawData(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
+
+                        let st = SongTunes()
+                        let song = st.processInputText(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
+                        
                         print("==========")
-                        song.printSongData()
+                        st.printSongData(song:song)
                         print("==========")
                         
                     } else if let error = error {
@@ -136,6 +139,8 @@ extension String {
     // match regex pattern - use to determine if valid file extension exists
     func matching(pattern regexPattern: String) throws -> [String] {
         return try self.matching(expression: NSRegularExpression(pattern: regexPattern))
+        // TODO: add this to NSRegularExpression:  options:NSRegularExpressionCaseInsensitive
+        
     }
     
     func stripExtension() -> String {
