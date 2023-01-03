@@ -88,17 +88,13 @@ struct AddSongView: View {
     
     
     private func addSong() {
-        
-        let hashStrs = Set(songs.map{ $0.hashStr })
+        let hashStrs: Set<String> = Set(songs.map{ $0.hashStr! })
         let st = SongTunes()
         let hashStr = st.computeHash(artist: artist, title: title)
+        
         // only add song if it doesn't already exist in the library
         if !hashStrs.contains(hashStr) {
             withAnimation {
-                
-    //            let song = st.createSong(artist: artist, title: title, lyrics: lyrics, key: nil, genre: nil, tags: nil, chords: nil)
-    //            print("=====")
-    //            print(type(of: song))
                 let song = Song(context: viewContext)
                 song.songid = UUID()
                 song.hashStr = st.computeHash(artist: artist, title: title)
@@ -106,21 +102,23 @@ struct AddSongView: View {
                 song.title = title.capitalized
                 song.key = key.capitalized
                 song.genre = genre.capitalized
-    //            song.tags = tags
-    //            song.chords = chords
+                //            song.tags = tags
+                //            song.chords = chords
                 song.lyrics = lyrics
                 st.printSongData(song:song) // deleteme
                 saveContext()
             }
         }
         
-
+        
     }
     
     private func reset() {
         title = ""
         artist = ""
         lyrics = ""
+        genre = ""
+        key = ""
     }
     
     // TODO : refactor - copy/pasted many times
