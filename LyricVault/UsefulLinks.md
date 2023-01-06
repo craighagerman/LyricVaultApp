@@ -66,3 +66,9 @@ NOTE
     - My ugly solution (until I figure things out) is to use YamlSwift to serialize `chords` using YamlSwift and the rest with Yams. (ugg)
 
 
+MVVP design pattern
+- https://www.youtube.com/watch?v=gGM_Qn3CUfQ
+
+Access a managed object context from a view model
+- https://stackoverflow.com/questions/74063240/how-do-i-access-a-managed-object-context-in-the-environment-from-a-view-model
+
