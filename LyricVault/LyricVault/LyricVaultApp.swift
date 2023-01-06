@@ -29,7 +29,6 @@ struct LyricVaultApp: App {
     var body: some Scene {
         WindowGroup {
             LyricVaultView().environment(\.managedObjectContext, persistenceController.container.viewContext)
-            //            SongListView().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
         .onChange(of: scenePhase) { _ in
             persistenceController.save()

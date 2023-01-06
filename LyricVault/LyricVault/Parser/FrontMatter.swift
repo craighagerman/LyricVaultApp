@@ -82,6 +82,7 @@ struct FrontMatterParser {
         let yml = try! Yaml.load(fmText)
         let chords = yml["chords"].array!
         let chordKeys: [String] = chords.flatMap({ $0.dictionary!.map( { $0.key } )  }).map({ $0.string! })
+        // FIXME : throws an error when importing John Legend
         let chordValues: [String] = chords.flatMap({ $0.dictionary!.map( { $0.value } )  }).map({ $0.string! })
         let sectionChords = Array(zip(chordKeys, chordValues)).map{ $0 + ": " + $1 }
         //        let sectionToChords = Dictionary(uniqueKeysWithValues: zip(chordKeys, chordValues))

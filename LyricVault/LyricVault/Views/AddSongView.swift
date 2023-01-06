@@ -127,7 +127,7 @@ struct AddSongView: View {
             try viewContext.save()
         } catch {
             let error = error as NSError
-            fatalError("An error occured: \(error)")
+            fatalError("An error occured while calling saveContext: \(error)")
         }
     }
     

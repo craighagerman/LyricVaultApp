@@ -12,21 +12,11 @@ import Yaml
 import SwiftUI
 
 
-//public class SongTunes: NSManagedObject {
-  
 public class SongTunes {
-
-//    var songid: UUID?
-//    var hashStr: String?
-//    var artist: String?
-//    var title: String?
-//    var lyrics: String?
-//    var key: String?
-//    var genre: String?
-//    var tags: [String]?
-//    var chords: [String]?
     
-    @Environment(\.managedObjectContext) private var viewContext
+    let persistenceController = PersistenceController.shared
+    let viewContext = PersistenceController.shared.container.viewContext
+//    @Environment(\.managedObjectContext) private var viewContext
     
     func processInputText(title: String, artist: String, rawtext: String) -> Song {
         let cleanText = boldifyLyricSections(text: rawtext)
@@ -65,6 +55,7 @@ public class SongTunes {
         song.tags = fm.tags
         song.chords = fm.chords
         song.lyrics = lyrics
+        saveContext()
         return song
     }
     
@@ -82,6 +73,16 @@ public class SongTunes {
         song.chords = chords
         song.lyrics = lyrics
         return song
+    }
+    
+    // TODO : refactor - copy/pasted many times
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("An error occured while calling saveContext: \(error)")
+        }
     }
     
     func printSongData(song: Song) {

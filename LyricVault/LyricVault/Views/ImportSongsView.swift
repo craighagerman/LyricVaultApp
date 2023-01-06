@@ -107,6 +107,7 @@ struct DropBoxDirectoryView: View {
                         let st = SongTunes()
                         let song = st.processInputText(title: songMetadata.title, artist: songMetadata.artist, rawtext: contents)
                         
+                        
                         print("==========")
                         st.printSongData(song:song)
                         print("==========")
@@ -120,7 +121,6 @@ struct DropBoxDirectoryView: View {
                 }
         }
     }
-    
 }
 
 
