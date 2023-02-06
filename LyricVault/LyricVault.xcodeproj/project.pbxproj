@@ -10,6 +10,7 @@
 		8D0314BD295E871A001BAB52 /* AddSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0314BC295E871A001BAB52 /* AddSongView.swift */; };
 		8D0314BF295E9382001BAB52 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0314BE295E9382001BAB52 /* SongView.swift */; };
 		8D0314D5295FF525001BAB52 /* Yaml in Frameworks */ = {isa = PBXBuildFile; productRef = 8D0314D4295FF525001BAB52 /* Yaml */; };
+		8D1DD2EA298F3E7E0055586B /* SetListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DD2E9298F3E7E0055586B /* SetListView2.swift */; };
 		8D31775F2952684800BDD263 /* LyricVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D31775E2952684800BDD263 /* LyricVaultApp.swift */; };
 		8D3177632952684B00BDD263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3177622952684B00BDD263 /* Assets.xcassets */; };
 		8D3177662952684B00BDD263 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D3177652952684B00BDD263 /* Preview Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		8D0314BC295E871A001BAB52 /* AddSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongView.swift; sourceTree = "<group>"; };
 		8D0314BE295E9382001BAB52 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
+		8D1DD2E9298F3E7E0055586B /* SetListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListView2.swift; sourceTree = "<group>"; };
 		8D31775B2952684800BDD263 /* LyricVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LyricVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D31775E2952684800BDD263 /* LyricVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricVaultApp.swift; sourceTree = "<group>"; };
 		8D3177622952684B00BDD263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				8D428F6E2958F36900C03D9F /* LyricVaultView.swift */,
 				8D428F73295A9A5F00C03D9F /* ImportSongsView.swift */,
 				8D3FAA4F295D4485000F4ADE /* SetlistView.swift */,
+				8D1DD2E9298F3E7E0055586B /* SetListView2.swift */,
 				8D0314BC295E871A001BAB52 /* AddSongView.swift */,
 				8D0314BE295E9382001BAB52 /* SongView.swift */,
 				8D88B6DB2967C21D0015DD01 /* ResultsView.swift */,
@@ -240,6 +243,7 @@
 				8D0314BF295E9382001BAB52 /* SongView.swift in Sources */,
 				8D3177752953526C00BDD263 /* _examples_Constants.swift in Sources */,
 				8D0314BD295E871A001BAB52 /* AddSongView.swift in Sources */,
+				8D1DD2EA298F3E7E0055586B /* SetListView2.swift in Sources */,
 				8D31775F2952684800BDD263 /* LyricVaultApp.swift in Sources */,
 				8DFBE28E2960E549006123CE /* FrontMatter.swift in Sources */,
 				8D3FAA50295D4485000F4ADE /* SetlistView.swift in Sources */,

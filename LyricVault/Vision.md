@@ -60,5 +60,19 @@ Setlist Table
 - song id (FK)
 
 
+------------------------------------------------------------------------------------------
+
+xcdatamodel entities
+- Setlist
+    - name
+    - setlistid
+    - song
+- Songs
+    - songid
+    - artist
+    - title
+    - etc ... 
+
+
 
 

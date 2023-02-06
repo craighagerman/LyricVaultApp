@@ -21,13 +21,12 @@ struct SetlistView: View {
     
     @FetchRequest(entity: Setlist.entity(), sortDescriptors: [NSSortDescriptor(key: "setlistid", ascending: true)])
     private var setlists: FetchedResults<Setlist>
+    
+    
 //    private var setlist_items: FetchedResults<Setlist>
     
 //    @FetchRequest(entity: Song.entity(), sortDescriptors: [NSSortDescriptor(key: "artist", ascending: true)])
 //    private var songs: FetchedResults<Song>
-    
-
-    
     
 //    init(setlists: Setlist) {
 //        self.setlists = setlists
@@ -37,8 +36,7 @@ struct SetlistView: View {
 //            predicate: NSPredicate(format: "todoList == %@", todoList)
 //        )
 //    }
-    
-    
+
 //    func fetchSetlists() {
 //        // fetch data from Core Data
 //        do {
@@ -80,8 +78,6 @@ struct SetlistView: View {
             Section("setlist: \(name)") {
                 ForEach(setlists) { setlist in
                     HStack {
-//                        Text("\(setlist.songid!)")
-//                        Spacer()
                         Text("\(setlist.setlistid!)")
                         Spacer()
                         Text("\(setlist.name!)")

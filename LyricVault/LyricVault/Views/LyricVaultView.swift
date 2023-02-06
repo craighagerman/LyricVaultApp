@@ -33,7 +33,7 @@ struct LyricVaultView: View {
                     Section("Set lists") {
                         ForEach(setlists) { setlist in
                             let slid = setlist.setlistid!
-                            NavigationLink(destination: SetlistView(slid: slid).environment(\.managedObjectContext, persistenceController.container.viewContext) ) {
+                            NavigationLink(destination: SetListView2(slid: slid).environment(\.managedObjectContext, persistenceController.container.viewContext) ) {
                                 Image(systemName: "list.bullet")
                                 Text(setlist.name ?? "Not found")
                             }
@@ -112,7 +112,8 @@ struct LyricVaultView_Previews: PreviewProvider {
 // ----------------------------------------------------------------------
 struct AddSetlistView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismissview
+    
     @State private var disabled = true
     @State var setlistName: String = ""
     
@@ -123,7 +124,7 @@ struct AddSetlistView: View {
                     dismiss()
                 }
                 Spacer()
-                Text("New Playlist")
+                Text("New Setlist")
                 Spacer()
                 Button("Done") {
                     addPlaylistName(name: setlistName)
@@ -132,13 +133,16 @@ struct AddSetlistView: View {
             }.padding(40)
             HStack {
                 Spacer()
-                TextField("Playlist Name", text: $setlistName).textFieldStyle(.roundedBorder).padding(10) //.background(Color.yellow)
+                TextField("Setlist Name", text: $setlistName).textFieldStyle(.roundedBorder).padding(10) //.background(Color.yellow)
                 Spacer()
             }
             Spacer()
         }
     }
     
+    func dismiss() {
+        print("DISMISS pressed")
+    }
     
     private func addPlaylistName(name: String) {
         print("calling addPlaylistName() with name= \(name)")
@@ -150,7 +154,6 @@ struct AddSetlistView: View {
         }
     }
     
-    
     // TODO : refactor - this is copy/pasted exactly in a couple places
     private func saveContext() {
         do {
@@ -160,7 +163,6 @@ struct AddSetlistView: View {
             fatalError("An error occured: \(error)")
         }
     }
-    
 }
 
 
